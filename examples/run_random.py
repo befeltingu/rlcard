@@ -24,14 +24,16 @@ def run(args):
     env.set_agents([agent for _ in range(env.num_players)])
 
     # Generate data from the environment
-    trajectories, player_wins = env.run(is_training=False)
-    # Print out the trajectories
-    print('\nTrajectories:')
-    print(trajectories)
-    print('\nSample raw observation:')
-    pprint.pprint(trajectories[0][0]['raw_obs'])
-    print('\nSample raw legal_actions:')
-    pprint.pprint(trajectories[0][0]['raw_legal_actions'])
+    for iter in range(10):
+        print(f"Iter {iter}")
+        trajectories, player_wins = env.run(is_training=False)
+        # Print out the trajectories
+        print('\nTrajectories:')
+        print(trajectories)
+        print('\nSample raw observation:')
+        pprint.pprint(trajectories[0][0]['raw_obs'])
+        print('\nSample raw legal_actions:')
+        pprint.pprint(trajectories[0][0]['raw_legal_actions'])
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("Random example in RLCard")
@@ -42,6 +44,7 @@ if __name__ == '__main__':
         choices=[
             'blackjack',
             'leduc-holdem',
+            'kuhn-poker',
             'limit-holdem',
             'doudizhu',
             'mahjong',

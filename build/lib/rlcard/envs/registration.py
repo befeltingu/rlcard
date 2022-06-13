@@ -47,7 +47,6 @@ class EnvRegistry(object):
             env_id (string): The name of the environent
             entry_point (string): A string the indicates the location of the envronment class
         '''
-        print(f"Register {env_id}")
         if env_id in self.env_specs:
             raise ValueError('Cannot re-register env_id: {}'.format(env_id))
         self.env_specs[env_id] = EnvSpec(env_id, entry_point)
